@@ -247,4 +247,27 @@ class Network(object):
         """
 
         return ";".join([",".join([str(n) for n in edge]) for edge in list(self.edges)])
+     
+    def as_dotstring(self):
+        """Returns network as a dot-formatted string"""
+
+        def node(n, position):
+            s = "\t\"%s\"" % n.name
+            if position:
+                x,y = position
+                s += " [pos=\"%d,%d\"]" % (x,y)
+            return s + ";"
+
+
+        nodes = self.nodes
+        positions = self.node_positions if hasattr(self, 'node_positions') \
+                                        else [None for n in nodes]
+
+        return "\n".join(
+            ["digraph G {"] + 
+            [node(n, pos) for n,pos in zip(nodes, positions)] + 
+            ["\t\"%s\" -> \"%s\";" % (nodes[src].name, nodes[dest].name) 
+                for src,dest in self.edges] +
+            ["}"]
+        )
 
