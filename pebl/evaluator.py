@@ -2,7 +2,8 @@
 
 import numpy as N
 from collections import deque
-import conditional_probability_distribution as cpd, prior_probability as prior
+import cpd
+import prior
 from shared_utils import *
 
 N.random.seed()

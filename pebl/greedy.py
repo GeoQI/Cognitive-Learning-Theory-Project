@@ -3,7 +3,7 @@
 import time
 import copy
 import network
-import model_evaluation as evaluator
+import evaluator
 from shared_utils import *
 import numpy as N
 
