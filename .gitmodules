@@ -1,0 +1,4 @@
+[submodule "pebl-repo"]
+	path = pebl-repo
+	url = https://github.com/abhik/pebl.git
+	branch = master
